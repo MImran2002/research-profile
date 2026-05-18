@@ -3,6 +3,16 @@
 import { motion, useInView } from "motion/react"
 import { useRef } from "react"
 import { Check, ArrowRight } from "lucide-react"
+import {
+  Microscope,
+  Presentation,
+  Users,
+  Globe,
+  FileText,
+  BookMarked,
+  Sparkles,
+  ArrowUpRight,
+} from "lucide-react";
 
 const plans = [
   {
@@ -63,146 +73,213 @@ export function Pricing() {
       className="bg-background py-20 md:py-28"
     >
       <div className="mx-auto max-w-5xl px-6">
-        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="mb-16 text-center"
+          className="mb-24"
         >
-          <p className="mb-3 text-xs font-medium uppercase tracking-widest text-muted-foreground">
-            Pricing
-          </p>
-          <h2
-            id="pricing-heading"
-            className="font-display text-3xl font-bold tracking-tight text-foreground md:text-4xl text-balance"
-          >
-            Choose your pricing plan
-          </h2>
-          <p className="mx-auto mt-4 max-w-md text-sm leading-relaxed text-muted-foreground">
-            Keep your notes organized, clear, and easy to find. Every thought
-            flows into a system that adapts to your style.
-          </p>
+          {/* Header */}
+          <div className="mb-12">
+            <h2 className="font-display text-3xl font-bold tracking-tight text-foreground md:text-5xl">
+              Publications & Conferences
+            </h2>
+
+            <p className="mt-4 max-w-3xl text-base leading-relaxed text-muted-foreground">
+              Research outputs, conference presentations, workshops, and preprints
+              exploring human-centered AI, communication, accessibility, and
+              socially responsible technology.
+            </p>
+          </div>
+
+          <div className="grid gap-7">
+            {[
+              {
+                title:
+                  "Talks that Build: Exploring Communication Factors for the Success of Emerging Professionals in Product Teams",
+                venue: "Preprint",
+                type: "Preprint / Research Paper",
+                icon: FileText,
+                color: "from-violet-500/20 via-fuchsia-500/10 to-transparent",
+                iconBg: "bg-violet-500/10",
+                description:
+                  "A preprint exploring how communication practices, team interaction, feedback, and collaboration influence the success of emerging professionals in product-oriented teams.",
+                tags: [
+                  "Organizational Communication",
+                  "Product Teams",
+                  "Team Collaboration",
+                  "Emerging Professionals",
+                  "Research Writing",
+                ],
+              },
+              {
+                title:
+                  "Trove: A Digitally Enhanced Memory Box for Looked-after and Adopted Children",
+                venue: "TEI Conference — University of Chicago",
+                type: "Workshop Attendance / Research Inspiration",
+                icon: Globe,
+                color: "from-cyan-500/20 via-blue-500/10 to-transparent",
+                iconBg: "bg-cyan-500/10",
+                description:
+                  "Attended TEI workshops and research sessions to explore tangible interaction, human-centered technology, and interactive systems. These sessions helped inspire the conceptual direction of Trove.",
+                tags: [
+                  "Tangible Interaction",
+                  "HCI",
+                  "Narrative Technology",
+                  "Interactive Systems",
+                  "Research Inspiration",
+                ],
+              },
+              {
+                title: "Reverse Engineering Research Presentation",
+                venue: "Berea College",
+                type: "Research Presentation",
+                icon: Presentation,
+                color: "from-purple-500/20 via-pink-500/10 to-transparent",
+                iconBg: "bg-purple-500/10",
+                description:
+                  "Presented a reverse engineering research project translating academic research concepts into an interactive human-centered technology exploration.",
+                tags: [
+                  "Research Analysis",
+                  "Research Replication",
+                  "HCI Exploration",
+                  "Presentation",
+                ],
+              },
+              {
+                title:
+                  "Optimization and Pruning of Building AI/ML Only on the Client Side in the Legal Sector",
+                venue: "SASE — Society of Asian Scientists and Engineers",
+                type: "Conference Presentation",
+                icon: Microscope,
+                color: "from-emerald-500/20 via-teal-500/10 to-transparent",
+                iconBg: "bg-emerald-500/10",
+                description:
+                  "Presented research on optimizing and pruning AI/ML systems designed to run fully on the client side, with attention to privacy-sensitive legal-sector applications.",
+                tags: [
+                  "Client-Side AI",
+                  "Model Optimization",
+                  "Pruning",
+                  "Privacy-Preserving AI",
+                  "Frontend AI",
+                ],
+              },
+              {
+                title:
+                  "Co-cultural Identities Impact on Appalachian College Student’s Health-Seeking Behaviors",
+                venue: "Kentucky Conference on Health Communication",
+                type: "Research Conference Presentation",
+                icon: Users,
+                color: "from-amber-500/20 via-orange-500/10 to-transparent",
+                iconBg: "bg-amber-500/10",
+                description:
+                  "Presented communication research examining how co-cultural identities shape health-seeking behaviors among Appalachian college students.",
+                tags: [
+                  "Health Communication",
+                  "Co-cultural Theory",
+                  "Social Identity",
+                  "Public Communication",
+                ],
+              },
+            ].map((item, index) => {
+              const Icon = item.icon;
+
+              return (
+                <motion.div
+                  key={item.title}
+                  initial={{ opacity: 0, x: index % 2 === 0 ? -30 : 30 }}
+                  animate={isInView ? { opacity: 1, x: 0 } : {}}
+                  transition={{ duration: 0.55, delay: index * 0.1 }}
+                  whileHover={{ y: -6, scale: 1.01 }}
+                  className="group relative overflow-hidden rounded-3xl border border-border bg-background/70 p-7 shadow-sm backdrop-blur transition-all duration-300 hover:shadow-xl"
+                >
+                  {/* Animated soft glow */}
+                  <motion.div
+                    animate={{
+                      opacity: [0.25, 0.55, 0.25],
+                      scale: [1, 1.08, 1],
+                    }}
+                    transition={{
+                      duration: 5,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                    }}
+                    className={`absolute inset-0 bg-gradient-to-br ${item.color}`}
+                  />
+
+                  {/* Floating decorative dot */}
+                  <motion.div
+                    animate={{
+                      y: [0, -10, 0],
+                      x: [0, 8, 0],
+                    }}
+                    transition={{
+                      duration: 6,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                    }}
+                    className="absolute right-8 top-8 h-20 w-20 rounded-full bg-white/5 blur-2xl"
+                  />
+
+                  <div className="relative z-10">
+                    <div className="mb-5 flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
+                      <div className="flex gap-4">
+                        <motion.div
+                          whileHover={{ rotate: 8, scale: 1.08 }}
+                          className={`flex h-14 w-14 items-center justify-center rounded-2xl border border-white/10 ${item.iconBg}`}
+                        >
+                          <Icon className="h-6 w-6 text-foreground" />
+                        </motion.div>
+
+                        <div>
+                          <div className="mb-2 inline-flex items-center gap-2 rounded-full border border-border bg-background/80 px-3 py-1 text-xs text-muted-foreground">
+                            <Sparkles className="h-3 w-3" />
+                            {item.type}
+                          </div>
+
+                          <h3 className="max-w-3xl text-2xl font-semibold tracking-tight text-foreground">
+                            {item.title}
+                          </h3>
+
+                          <p className="mt-2 text-sm text-muted-foreground">
+                            {item.venue}
+                          </p>
+                        </div>
+                      </div>
+
+                      <ArrowUpRight className="h-5 w-5 text-muted-foreground transition group-hover:translate-x-1 group-hover:-translate-y-1" />
+                    </div>
+
+                    <div className="rounded-2xl border border-border bg-background/50 p-5">
+                      <div className="mb-3 flex items-center gap-2">
+                        <BookMarked className="h-4 w-4 text-foreground" />
+                        <h4 className="text-sm font-semibold text-foreground">
+                          Overview
+                        </h4>
+                      </div>
+
+                      <p className="text-sm leading-relaxed text-muted-foreground">
+                        {item.description}
+                      </p>
+                    </div>
+
+                    <div className="mt-5 flex flex-wrap gap-2">
+                      {item.tags.map((tag) => (
+                        <motion.span
+                          key={tag}
+                          whileHover={{ y: -3, scale: 1.04 }}
+                          className="rounded-full border border-border bg-background/80 px-3 py-1 text-xs text-muted-foreground"
+                        >
+                          {tag}
+                        </motion.span>
+                      ))}
+                    </div>
+                  </div>
+                </motion.div>
+              );
+            })}
+          </div>
         </motion.div>
-
-        {/* Cards */}
-        <div className="grid items-stretch gap-5 md:grid-cols-3">
-          {plans.map((plan, i) => (
-            <motion.div
-              key={plan.name}
-              initial={{ opacity: 0, y: 30 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: 0.12 * i }}
-              className={`group relative flex flex-col rounded-2xl border transition-all duration-300 ${
-                plan.featured
-                  ? "border-foreground bg-foreground text-primary-foreground shadow-2xl md:-my-4 md:py-2"
-                  : "border-border bg-card text-foreground hover:border-foreground/20 hover:shadow-lg"
-              }`}
-            >
-              {/* Badge */}
-              {plan.featured && (
-                <div className="flex justify-center pt-6">
-                  <span className="rounded-full border border-primary-foreground/20 bg-primary-foreground/10 px-3 py-1 text-[10px] font-semibold uppercase tracking-widest text-primary-foreground/80">
-                    Most Popular
-                  </span>
-                </div>
-              )}
-
-              <div className={`flex flex-1 flex-col p-7 ${plan.featured ? "pt-4" : ""}`}>
-                {/* Plan Name */}
-                <p
-                  className={`text-sm font-medium ${
-                    plan.featured
-                      ? "text-primary-foreground/60"
-                      : "text-muted-foreground"
-                  }`}
-                >
-                  {plan.name}
-                </p>
-
-                {/* Price */}
-                <div className="mt-3 flex items-baseline gap-1.5">
-                  <span className="font-display text-4xl font-bold tracking-tight">
-                    {plan.price}
-                  </span>
-                  <span
-                    className={`text-sm ${
-                      plan.featured
-                        ? "text-primary-foreground/40"
-                        : "text-muted-foreground"
-                    }`}
-                  >
-                    {plan.period}
-                  </span>
-                </div>
-
-                {/* Description */}
-                <p
-                  className={`mt-2 text-sm leading-relaxed ${
-                    plan.featured
-                      ? "text-primary-foreground/50"
-                      : "text-muted-foreground"
-                  }`}
-                >
-                  {plan.description}
-                </p>
-
-                {/* Divider */}
-                <div
-                  className={`my-6 h-px ${
-                    plan.featured ? "bg-primary-foreground/10" : "bg-border"
-                  }`}
-                />
-
-                {/* Features */}
-                <ul className="flex-1 space-y-3.5">
-                  {plan.features.map((feature) => (
-                    <li key={feature} className="flex items-start gap-3">
-                      <span
-                        className={`mt-0.5 flex h-4 w-4 flex-shrink-0 items-center justify-center rounded-full ${
-                          plan.featured
-                            ? "bg-primary-foreground/15"
-                            : "bg-foreground/5"
-                        }`}
-                      >
-                        <Check
-                          className={`h-2.5 w-2.5 ${
-                            plan.featured
-                              ? "text-primary-foreground/70"
-                              : "text-foreground/60"
-                          }`}
-                          strokeWidth={3}
-                        />
-                      </span>
-                      <span
-                        className={`text-sm leading-snug ${
-                          plan.featured
-                            ? "text-primary-foreground/70"
-                            : "text-muted-foreground"
-                        }`}
-                      >
-                        {feature}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-
-                {/* CTA */}
-                <a
-                  href="#cta"
-                  className={`mt-8 flex items-center justify-center gap-2 rounded-xl py-3 text-sm font-medium transition-all duration-200 ${
-                    plan.featured
-                      ? "bg-primary-foreground text-foreground hover:bg-primary-foreground/90"
-                      : "border border-border bg-transparent text-foreground hover:bg-foreground hover:text-primary-foreground"
-                  }`}
-                >
-                  {plan.cta}
-                  <ArrowRight className="h-3.5 w-3.5" />
-                </a>
-              </div>
-            </motion.div>
-          ))}
-        </div>
       </div>
     </section>
   )
