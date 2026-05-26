@@ -1,7 +1,6 @@
 "use client"
 
 import { motion } from "motion/react"
-import { FileText } from "lucide-react"
 import Link from "next/link"
 
 export function Header() {
@@ -14,40 +13,39 @@ export function Header() {
     >
       <div className="flex items-center justify-between px-6 py-3">
         <Link href="/" className="flex items-center gap-2">
-          <FileText className="h-6 w-6 text-foreground" />
           <span className="font-display text-xl font-bold text-foreground">
             IMRAN.POV
           </span>
         </Link>
         <nav aria-label="Main navigation" className="hidden items-center gap-8 md:flex">
           <Link
-            href="#features"
+            href="#AboutMe"
             className="text-sm text-muted-foreground transition-colors hover:text-foreground"
           >
-            Research Experience
+            About Me 
           </Link>
           <Link
-            href="#platforms"
+            href="#PubConf"
             className="text-sm text-muted-foreground transition-colors hover:text-foreground"
           >
             Publications & Conferences
           </Link>
           <Link
-            href="#pricing"
+            href="#research-exp"
             className="text-sm text-muted-foreground transition-colors hover:text-foreground"
           >
-            Projects
+            Research Experience
           </Link>
           <Link
-            href="#features"
+            href="#ExploreMore"
             className="text-sm text-muted-foreground transition-colors hover:text-foreground"
           >
-            Writings & Readings
+            Explore More
           </Link>
         </nav>
         <div className="flex items-center gap-3">
           <Link
-            href="#cta"
+            href="mailto:nyanlinzaw56@gmail.com"
             className="rounded-full bg-foreground px-5 py-2 text-sm font-medium text-background transition-opacity hover:opacity-90"
           >
             Contact
